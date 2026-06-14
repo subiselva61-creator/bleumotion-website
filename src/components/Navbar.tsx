@@ -43,65 +43,60 @@ export default function Navbar() {
   }, [open])
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 w-full border-b transition-all duration-300 ${
-        scrolled
-          ? "nav-glass nav-glass-scrolled border-white/10"
-          : "nav-glass border-transparent"
-      }`}
-    >
-      <div className="nav-gradient-line pointer-events-none absolute inset-x-0 top-0 h-px" />
-      <div className="nav-gradient-glow pointer-events-none absolute inset-0" />
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4">
+      <nav
+        className={`nav-hang relative mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-2xl border px-3 py-2 transition-all duration-300 sm:px-4 sm:py-2.5 lg:grid lg:min-h-[3.5rem] lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-6 ${
+          scrolled ? "nav-glass nav-glass-scrolled border-white/15" : "nav-glass border-white/10"
+        }`}
+      >
+        <div className="nav-gradient-line pointer-events-none absolute inset-x-4 top-0 h-px rounded-full sm:inset-x-6" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:min-h-[4rem] lg:py-3.5">
-        <div className="flex items-center justify-between gap-3 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-6">
-          <Link
-            to="/"
-            className="group relative z-10 shrink-0 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-midnight lg:justify-self-start"
-          >
-            <span className="absolute -inset-2 rounded-xl bg-accent-cyan/0 transition-colors group-hover:bg-accent-cyan/10" />
-            <Logo size="sm" className="relative [&>span:last-child]:nav-logo-text" />
-          </Link>
+        <Link
+          to="/"
+          className="group relative z-10 shrink-0 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-midnight lg:justify-self-start"
+        >
+          <span className="absolute -inset-2 rounded-xl bg-accent-cyan/0 transition-colors group-hover:bg-accent-cyan/10" />
+          <Logo size="sm" className="relative [&>span:last-child]:nav-logo-text" />
+        </Link>
 
-          <div className="relative z-10 hidden w-full min-w-0 justify-center px-1 lg:flex lg:justify-self-center">
-            <div className="w-max max-w-full overflow-x-auto overflow-y-visible rounded-full border border-accent-cyan/25 px-1 py-1 shadow-inner shadow-black/20 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <GooeyNav
-                items={gooeyItems}
-                particleCount={8}
-                particleDistances={[40, 6]}
-                particleR={60}
-                animationTime={600}
-                timeVariance={300}
-                colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-              />
-            </div>
-          </div>
-
-          <div className="relative z-10 flex items-center gap-2 lg:justify-self-end">
-            <Link
-              to="/contact"
-              className="nav-gradient-cta group hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent-cyan/20 transition-all hover:scale-[1.02] hover:shadow-accent-indigo/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-midnight lg:inline-flex"
-            >
-              Get in Touch
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-
-            <button
-              type="button"
-              className={`flex min-h-11 min-w-11 items-center justify-center rounded-full border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric lg:hidden ${
-                open
-                  ? "border-accent-cyan/40 bg-white/10 text-white"
-                  : "border-white/15 bg-white/5 text-white hover:border-accent-cyan/30 hover:bg-white/10"
-              }`}
-              onClick={() => setOpen(!open)}
-              aria-expanded={open}
-              aria-label={open ? "Close menu" : "Open menu"}
-            >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+        <div className="relative z-10 hidden w-full min-w-0 justify-center px-1 lg:flex lg:justify-self-center">
+          <div className="w-max max-w-full overflow-x-auto overflow-y-visible rounded-full border border-accent-cyan/25 px-1 py-1 shadow-inner shadow-black/20 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <GooeyNav
+              items={gooeyItems}
+              particleCount={8}
+              particleDistances={[40, 6]}
+              particleR={60}
+              animationTime={600}
+              timeVariance={300}
+              colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+            />
           </div>
         </div>
-      </div>
+
+        <div className="relative z-10 flex items-center gap-2 lg:justify-self-end">
+          <Link
+            to="/contact"
+            className="nav-gradient-cta group hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent-cyan/20 transition-all hover:scale-[1.02] hover:shadow-accent-indigo/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-midnight lg:inline-flex"
+          >
+            Get in Touch
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+
+          <button
+            type="button"
+            className={`flex min-h-11 min-w-11 items-center justify-center rounded-full border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric lg:hidden ${
+              open
+                ? "border-accent-cyan/40 bg-white/10 text-white"
+                : "border-white/15 bg-white/5 text-white hover:border-accent-cyan/30 hover:bg-white/10"
+            }`}
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </nav>
 
       {open && (
         <>

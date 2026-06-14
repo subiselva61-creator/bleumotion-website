@@ -24,7 +24,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 4rem;
+    scroll-padding-top: 5.5rem;
   }
 
   body {
@@ -46,25 +46,112 @@
 }
 
 @layer components {
+  .nav-hang {
+    pointer-events: auto;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
   .nav-glass {
+    position: relative;
     background: linear-gradient(
-      180deg,
-      rgba(11, 30, 61, 0.92) 0%,
-      rgba(15, 23, 42, 0.82) 100%
+      135deg,
+      rgba(11, 30, 61, 0.8) 0%,
+      rgba(11, 30, 61, 0.85) 45%,
+      rgba(11, 30, 61, 0.9) 100%
     );
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.15),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.2),
+      0 8px 32px rgba(11, 30, 61, 0.28);
+  }
+
+  .nav-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+  }
+
+  .nav-glass::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25) 50%,
+      transparent
+    );
   }
 
   .nav-glass-scrolled {
     background: linear-gradient(
-      180deg,
-      rgba(11, 30, 61, 0.97) 0%,
-      rgba(15, 23, 42, 0.94) 100%
+      135deg,
+      rgba(11, 30, 61, 0.85) 0%,
+      rgba(11, 30, 61, 0.9) 40%,
+      rgba(11, 30, 61, 0.95) 100%
     );
     box-shadow:
-      0 4px 24px rgba(34, 211, 238, 0.12),
-      0 1px 0 rgba(129, 140, 248, 0.2);
+      inset 0 1px 1px rgba(255, 255, 255, 0.2),
+      0 12px 40px rgba(11, 30, 61, 0.35),
+      0 4px 24px rgba(34, 211, 238, 0.12);
+  }
+
+  .hero-glass {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.04) 40%,
+      rgba(11, 30, 61, 0.35) 100%
+    );
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.18),
+      0 12px 40px rgba(11, 30, 61, 0.25);
+  }
+
+  .hero-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+  }
+
+  .hero-glass::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent
+    );
   }
 
   .nav-gradient-line {

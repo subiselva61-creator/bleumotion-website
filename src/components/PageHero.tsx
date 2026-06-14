@@ -15,10 +15,10 @@ export default function PageHero({
   ctas,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-midnight via-midnight to-royal px-4 py-16 sm:px-6 sm:py-20 md:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-midnight via-midnight to-royal px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-28 md:pb-[148px] md:pt-[148px]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.25),transparent_55%)]" />
       <div className="relative mx-auto max-w-6xl">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm sm:p-8 md:p-12">
+        <div className="hero-glass mx-auto max-w-4xl rounded-2xl border border-white/12 p-6 text-center sm:p-8 md:p-12">
           <h1 className="text-2xl font-bold leading-tight text-white sm:text-3xl md:text-5xl">
             {headline}
           </h1>
