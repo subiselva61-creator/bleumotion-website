@@ -1,9 +1,50 @@
-import { Link } from "react-router-dom"
-import { Globe2, Network, ArrowRight } from "lucide-react"
+import { Network, Scale, ArrowLeftRight, Globe2, Landmark, Handshake, BarChart3, Zap } from "lucide-react"
 import PageHero from "../components/PageHero"
 import SectionWrapper from "../components/SectionWrapper"
 import StatBand from "../components/StatBand"
+import StepProcess from "../components/StepProcess"
+import PreviewCard from "../components/PreviewCard"
+import PullQuote from "../components/PullQuote"
+import FeatureCard from "../components/FeatureCard"
 import CTABanner from "../components/CTABanner"
+
+const previewCards = [
+  {
+    title: "The Challenge",
+    description:
+      "Discover why €50 trillion in global settlement infrastructure still leaves out two of the world's three largest economies.",
+    to: "/challenge",
+    icon: Globe2,
+  },
+  {
+    title: "Our Solution",
+    description:
+      "See how a new crossborder market infrastructure turns fragmented climate projects into investable, liquid assets.",
+    to: "/solution",
+    icon: Network,
+  },
+  {
+    title: "Impact in Action",
+    description:
+      "Explore illustrative case studies of how this infrastructure could transform real projects on the ground.",
+    to: "/impact",
+    icon: Globe2,
+  },
+  {
+    title: "Capital & Partners",
+    description:
+      "Learn what it takes to build a €3 trillion institution — and who's stepping up to fund it.",
+    to: "/capital",
+    icon: Landmark,
+  },
+  {
+    title: "Our Vision",
+    description:
+      "Understand the bigger picture: financial sovereignty for the Global South's green transition.",
+    to: "/vision",
+    icon: Handshake,
+  },
+]
 
 export default function Home() {
   return (
@@ -16,6 +57,18 @@ export default function Home() {
           { label: "Talk to Us", to: "/contact", variant: "outline" },
         ]}
       />
+
+      <SectionWrapper variant="white">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-lg leading-relaxed text-slate md:text-xl">
+            The world is racing to close a climate finance gap measured in
+            trillions, not billions. Every year of delay locks in higher
+            emissions and higher costs. The infrastructure to move capital at the
+            speed and scale this moment demands doesn't yet exist for most of the
+            Global South — and building it is no longer optional.
+          </p>
+        </div>
+      </SectionWrapper>
 
       <SectionWrapper variant="ice">
         <StatBand
@@ -53,55 +106,82 @@ export default function Home() {
       </SectionWrapper>
 
       <SectionWrapper variant="ice">
+        <StepProcess
+          title="How It Works"
+          steps={[
+            {
+              icon: Scale,
+              title: "Standardize",
+              description:
+                "Member states adopt a single, unified green taxonomy, replacing dozens of conflicting national definitions.",
+            },
+            {
+              icon: Network,
+              title: "Aggregate",
+              description:
+                "Individual projects are bundled into diversified baskets, turning small, fragmented deals into large, tradable instruments.",
+            },
+            {
+              icon: ArrowLeftRight,
+              title: "Settle",
+              description:
+                "A dedicated cross-border settlement layer issues and trades green-backed securities with the same trust and efficiency as global markets.",
+            },
+          ]}
+        />
+      </SectionWrapper>
+
+      <SectionWrapper variant="white">
         <h2 className="mb-10 text-center text-2xl font-bold text-midnight md:text-3xl">
           Explore Bleumotion
         </h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              title: "The Challenge",
-              description:
-                "Why current global financial infrastructure fails the Global South.",
-              to: "/challenge",
-              icon: Globe2,
-            },
-            {
-              title: "Our Solution",
-              description:
-                "A dedicated Global South Crossborder Market Infrastructure.",
-              to: "/solution",
-              icon: Network,
-            },
-            {
-              title: "Impact in Action",
-              description:
-                "How unified infrastructure turns resources into investable assets.",
-              to: "/impact",
-              icon: Globe2,
-            },
-          ].map((card) => (
-            <Link
-              key={card.to}
-              to={card.to}
-              className="group rounded-2xl bg-white p-6 shadow-md shadow-sky/10 transition-shadow hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal"
-            >
-              <card.icon
-                className="mb-4 h-8 w-8 text-royal"
-                aria-hidden="true"
-              />
-              <h3 className="text-xl font-semibold text-midnight">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-slate">{card.description}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-royal group-hover:text-electric">
-                Learn more <ArrowRight className="h-4 w-4" />
-              </span>
-            </Link>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {previewCards.map((card) => (
+            <PreviewCard key={card.to} {...card} />
           ))}
         </div>
       </SectionWrapper>
 
-      <CTABanner />
+      <SectionWrapper variant="ice">
+        <PullQuote>
+          A sustainable future shouldn't be a privilege reserved for nations
+          with mature capital markets. It should be within reach of every nation
+          with the resources, the ambition, and the will to build it.
+        </PullQuote>
+      </SectionWrapper>
+
+      <SectionWrapper variant="white">
+        <h2 className="mb-10 text-center text-2xl font-bold text-midnight md:text-3xl">
+          Who We Work With
+        </h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <FeatureCard
+            icon={Landmark}
+            title="Governments & Central Banks"
+            description="Shaping taxonomy standards and adopting Euroclearability milestones."
+          />
+          <FeatureCard
+            icon={Handshake}
+            title="Multilateral Development Banks"
+            description="Structuring blended finance and de-risking mechanisms."
+          />
+          <FeatureCard
+            icon={BarChart3}
+            title="Institutional Investors"
+            description="Accessing scalable, de-risked green assets at investment grade."
+          />
+          <FeatureCard
+            icon={Zap}
+            title="Project Developers"
+            description="Moving from early-stage concept to investment-ready faster."
+          />
+        </div>
+      </SectionWrapper>
+
+      <CTABanner
+        headline="Ready to help build the financial architecture for a greener Global South?"
+        buttonLabel="Get in Touch"
+      />
     </>
   )
 }

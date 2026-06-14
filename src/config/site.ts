@@ -6,8 +6,13 @@ export const companyInfo = {
 }
 
 export const logo = {
-  src: "/logo.png",
+  src: "/logo2.png",
   alt: "Bleumotion logo",
+}
+
+export const socialLinks = {
+  linkedin: null as string | null,
+  x: null as string | null,
 }
 
 export const navLinks = [

@@ -1,5 +1,5 @@
-import { motion } from "framer-motion"
 import { logo } from "../config/site"
+import MetallicPaint from "./MetallicPaint"
 
 interface LogoProps {
   showText?: boolean
@@ -9,9 +9,9 @@ interface LogoProps {
 }
 
 const sizeClasses = {
-  sm: "h-8 w-8",
-  md: "h-10 w-10",
-  lg: "h-14 w-14",
+  sm: "h-9 w-9",
+  md: "h-11 w-11",
+  lg: "h-16 w-16",
 }
 
 const textSizeClasses = {
@@ -28,13 +28,35 @@ export default function Logo({
 }: LogoProps) {
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
-      <motion.img
-        src={logo.src}
-        alt={logo.alt}
-        className={`${sizeClasses[size]} shrink-0 object-contain`}
-        whileHover={{ rotate: 45 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-      />
+      <span
+        className={`${sizeClasses[size]} relative shrink-0 overflow-hidden`}
+        role="img"
+        aria-label={logo.alt}
+      >
+        <MetallicPaint
+          imageSrc="/logo2.png"
+          seed={42}
+          scale={4}
+          patternSharpness={1}
+          noiseScale={0.5}
+          speed={0.3}
+          liquid={0.75}
+          mouseAnimation={false}
+          brightness={2}
+          contrast={0.5}
+          refraction={0.01}
+          blur={0.015}
+          chromaticSpread={2}
+          fresnel={1}
+          angle={0}
+          waveAmplitude={1}
+          distortion={1}
+          contour={0.2}
+          lightColor="#ffffff"
+          darkColor="#0b1e3d"
+          tintColor="#60a5fa"
+        />
+      </span>
       {showText && (
         <span
           className={`font-bold tracking-tight ${textSizeClasses[size]} ${

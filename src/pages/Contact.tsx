@@ -1,10 +1,14 @@
 import { useState, type FormEvent } from "react"
-import { MapPin, Building } from "lucide-react"
+import { Link } from "react-router-dom"
+import { MapPin, Building, Mail, Share2 } from "lucide-react"
 import PageHero from "../components/PageHero"
 import SectionWrapper from "../components/SectionWrapper"
+import FeatureCard from "../components/FeatureCard"
+import FAQ from "../components/FAQ"
 import Button from "../components/Button"
 import Logo from "../components/Logo"
-import { companyInfo, contactEmail } from "../config/site"
+import { companyInfo, contactEmail, socialLinks } from "../config/site"
+import { Landmark, Handshake, Zap, BookOpen } from "lucide-react"
 
 export default function Contact() {
   const [formError, setFormError] = useState<string | null>(null)
@@ -44,11 +48,39 @@ export default function Contact() {
         subheadline="Whether you're a government institution, development bank, or private investor exploring the future of Global South climate finance, we'd like to hear from you."
       />
 
+      <SectionWrapper variant="white">
+        <h2 className="mb-10 text-center text-2xl font-bold text-midnight md:text-3xl">
+          Ways to Get Involved
+        </h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          <FeatureCard
+            icon={Landmark}
+            title="Governments & Central Banks"
+            description="Join the founding coalition and help shape the unified taxonomy and governance model."
+          />
+          <FeatureCard
+            icon={Handshake}
+            title="Development Banks & Investors"
+            description="Explore co-investment and de-risking partnership opportunities."
+          />
+          <FeatureCard
+            icon={Zap}
+            title="Project Developers"
+            description="Submit your climate or infrastructure project for future pipeline consideration."
+          />
+          <FeatureCard
+            icon={BookOpen}
+            title="Media & Researchers"
+            description="Request briefings, background material, or interviews."
+          />
+        </div>
+      </SectionWrapper>
+
       <SectionWrapper variant="ice">
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-12 md:grid-cols-2">
           <form
             onSubmit={handleSubmit}
-            className="rounded-2xl bg-white p-8 shadow-md shadow-sky/10"
+            className="rounded-2xl bg-white p-6 shadow-md shadow-sky/10 sm:p-8"
             noValidate
           >
             <h2 className="text-xl font-semibold text-midnight">
@@ -127,7 +159,7 @@ export default function Contact() {
             )}
 
             <div className="mt-6">
-              <Button type="submit" variant="primary">
+              <Button type="submit" variant="primary" fullWidth>
                 Send Message
               </Button>
             </div>
@@ -136,7 +168,7 @@ export default function Contact() {
           <div className="flex flex-col justify-center">
             <Logo size="lg" theme="light" className="mb-6" />
             <h2 className="text-xl font-semibold text-midnight">
-              Company Details
+              Office &amp; Social
             </h2>
             <div className="mt-6 space-y-4">
               <div className="flex items-start gap-3">
@@ -153,9 +185,85 @@ export default function Contact() {
                 />
                 <p className="text-slate">{companyInfo.address}</p>
               </div>
+              {contactEmail && (
+                <div className="flex items-start gap-3">
+                  <Mail
+                    className="mt-0.5 h-5 w-5 shrink-0 text-royal"
+                    aria-hidden="true"
+                  />
+                  <a
+                    href={`mailto:${contactEmail}`}
+                    className="text-slate transition-colors hover:text-royal"
+                  >
+                    {contactEmail}
+                  </a>
+                </div>
+              )}
+              <div className="flex items-start gap-3">
+                <Share2
+                  className="mt-0.5 h-5 w-5 shrink-0 text-royal"
+                  aria-hidden="true"
+                />
+                <div className="space-y-1 text-slate">
+                  {socialLinks.linkedin ? (
+                    <a
+                      href={socialLinks.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block transition-colors hover:text-royal"
+                    >
+                      LinkedIn
+                    </a>
+                  ) : (
+                    <span className="text-slate/60">LinkedIn — coming soon</span>
+                  )}
+                  {socialLinks.x ? (
+                    <a
+                      href={socialLinks.x}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block transition-colors hover:text-royal"
+                    >
+                      X (Twitter)
+                    </a>
+                  ) : (
+                    <span className="text-slate/60">X (Twitter) — coming soon</span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </SectionWrapper>
+
+      <SectionWrapper variant="white">
+        <FAQ
+          title="Frequently Asked Questions"
+          items={[
+            {
+              question: "How can my country get involved?",
+              answer:
+                "Reach out via the form above — our team will share details on the founding coalition process and current Euroclearability milestones.",
+            },
+            {
+              question: "Is BleuMotion a bank or financial institution?",
+              answer:
+                "No. BleuMotion is an advisory firm helping design and convene the infrastructure, governance, and standards needed to bring this institution to life.",
+            },
+            {
+              question: "What's the timeline for getting started?",
+              answer:
+                'Timelines vary by country readiness — see "The Road Ahead" on Our Vision for the overall phased approach.',
+            },
+          ]}
+        />
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-slate">
+          For the full phased roadmap, visit{" "}
+          <Link to="/vision" className="font-medium text-royal hover:text-electric">
+            Our Vision
+          </Link>
+          .
+        </p>
       </SectionWrapper>
     </>
   )

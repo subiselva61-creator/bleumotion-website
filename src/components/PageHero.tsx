@@ -15,26 +15,27 @@ export default function PageHero({
   ctas,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-midnight via-midnight to-royal px-6 py-20 md:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-midnight via-midnight to-royal px-4 py-16 sm:px-6 sm:py-20 md:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.25),transparent_55%)]" />
       <div className="relative mx-auto max-w-6xl">
-        <div className="max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm md:p-12">
-          <h1 className="text-3xl font-bold leading-tight text-white md:text-5xl">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm sm:p-8 md:p-12">
+          <h1 className="text-2xl font-bold leading-tight text-white sm:text-3xl md:text-5xl">
             {headline}
           </h1>
           {subheadline && (
-            <p className="mt-6 text-lg leading-relaxed text-white/85 md:text-xl">
+            <p className="mt-6 text-base leading-relaxed text-white/85 sm:text-lg md:text-xl">
               {subheadline}
             </p>
           )}
           {children}
           {ctas && ctas.length > 0 && (
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               {ctas.map((cta) => (
                 <Button
                   key={cta.label}
                   to={cta.to}
                   variant={cta.variant ?? "primary"}
+                  fullWidth
                 >
                   {cta.label}
                 </Button>

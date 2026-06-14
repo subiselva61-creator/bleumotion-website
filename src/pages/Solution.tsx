@@ -9,10 +9,16 @@ import {
   FileCheck,
   Zap,
   Leaf,
+  Layers,
+  Shield,
+  Users,
+  Sprout,
+  Landmark,
 } from "lucide-react"
 import PageHero from "../components/PageHero"
 import SectionWrapper from "../components/SectionWrapper"
 import FeatureCard from "../components/FeatureCard"
+import StepProcess from "../components/StepProcess"
 import CTABanner from "../components/CTABanner"
 
 export default function Solution() {
@@ -47,12 +53,50 @@ export default function Solution() {
       </SectionWrapper>
 
       <SectionWrapper variant="white">
+        <StepProcess
+          title="How It Works, Step by Step"
+          steps={[
+            {
+              icon: Scale,
+              title: "Standardize",
+              description:
+                "Member states adopt a shared green taxonomy.",
+            },
+            {
+              icon: Sprout,
+              title: "Originate",
+              description:
+                "Climate and infrastructure projects from member countries are screened and onboarded.",
+            },
+            {
+              icon: Layers,
+              title: "Aggregate",
+              description:
+                "Projects are bundled into diversified portfolios spanning multiple countries and sectors.",
+            },
+            {
+              icon: Shield,
+              title: "De-risk",
+              description:
+                "Blended finance structures and sovereign-backed guarantees are applied to each portfolio.",
+            },
+            {
+              icon: ArrowLeftRight,
+              title: "Settle & Trade",
+              description:
+                "The infrastructure issues tradable, green-backed securities and settles them across borders.",
+            },
+          ]}
+        />
+      </SectionWrapper>
+
+      <SectionWrapper variant="ice">
         <h2 className="mb-10 text-center text-2xl font-bold text-midnight md:text-3xl">
           How It Works — Two Structural Remedies
         </h2>
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="rounded-2xl bg-ice p-8 shadow-md shadow-sky/10">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white">
+          <div className="rounded-2xl bg-white p-6 shadow-md shadow-sky/10 sm:p-8">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-ice">
               <Scale className="h-6 w-6 text-royal" aria-hidden="true" />
             </div>
             <h3 className="text-xl font-semibold text-midnight">
@@ -64,8 +108,8 @@ export default function Solution() {
               into one liquid, high-grade instrument.
             </p>
           </div>
-          <div className="rounded-2xl bg-ice p-8 shadow-md shadow-sky/10">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white">
+          <div className="rounded-2xl bg-white p-6 shadow-md shadow-sky/10 sm:p-8">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-ice">
               <Handshake className="h-6 w-6 text-royal" aria-hidden="true" />
             </div>
             <h3 className="text-xl font-semibold text-midnight">
@@ -76,6 +120,23 @@ export default function Solution() {
               institutions, the infrastructure can offer guaranteed
               offtake-style arrangements, turning volatile project revenue into
               stable, predictable cash flows.
+            </p>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper variant="white">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-2xl font-bold text-midnight md:text-3xl">
+            Structural Remedies — Worked Example
+          </h2>
+          <div className="mt-6 rounded-2xl bg-ice p-6 shadow-md shadow-sky/10 sm:p-8">
+            <p className="leading-relaxed text-slate">
+              A single basket might combine a solar program in one country, a
+              sustainable transit project in another, and a land restoration
+              initiative in a third — each independently too small for global
+              investors to evaluate, but together issued as one tradable,
+              investment-grade green bond under a shared taxonomy.
             </p>
           </div>
         </div>
@@ -115,9 +176,39 @@ export default function Solution() {
       </SectionWrapper>
 
       <SectionWrapper variant="white">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-2xl font-bold text-midnight md:text-3xl">
+            Euroclearability Tiers
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-slate">
+            Each tier unlocks progressively deeper market access — giving
+            countries a clear, achievable reform pathway rather than an
+            all-or-nothing requirement.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <FeatureCard
+            icon={Lock}
+            title="Foundational"
+            description="Basic legal protections for investor property and collateral rights are in place."
+          />
+          <FeatureCard
+            icon={Network}
+            title="Intermediate"
+            description="Modern, automated clearing and settlement systems are operational."
+          />
+          <FeatureCard
+            icon={FileCheck}
+            title="Full Euroclearability"
+            description="Transparent, stable tax and reporting frameworks unlock full participation and the deepest liquidity access."
+          />
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper variant="ice">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-ice">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white">
               <Zap className="h-6 w-6 text-royal" aria-hidden="true" />
             </div>
             <h2 className="text-2xl font-bold text-midnight md:text-3xl">
@@ -129,10 +220,63 @@ export default function Solution() {
               sustainable projects from early concept toward investment-ready
               status.
             </p>
+            <ul className="mt-6 space-y-3">
+              <li className="flex items-start gap-2 leading-relaxed text-slate">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
+                <span>
+                  <strong className="text-midnight">Project preparation support</strong>{" "}
+                  — helping early-stage projects reach investment-ready status
+                </span>
+              </li>
+              <li className="flex items-start gap-2 leading-relaxed text-slate">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
+                <span>
+                  <strong className="text-midnight">Technical assistance</strong>{" "}
+                  — capacity-building for local financial institutions and
+                  regulators
+                </span>
+              </li>
+              <li className="flex items-start gap-2 leading-relaxed text-slate">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-royal" />
+                <span>
+                  <strong className="text-midnight">Pipeline development</strong>{" "}
+                  — identifying and cultivating future projects for aggregation
+                  into green-backed baskets
+                </span>
+              </li>
+            </ul>
           </div>
-          <div className="flex items-center justify-center rounded-2xl bg-ice p-12">
+          <div className="flex items-center justify-center rounded-2xl bg-white p-6 sm:p-12">
             <Leaf className="h-24 w-24 text-royal opacity-80" aria-hidden="true" />
           </div>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper variant="white">
+        <h2 className="mb-10 text-center text-2xl font-bold text-midnight md:text-3xl">
+          Who Benefits
+        </h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <FeatureCard
+            icon={Landmark}
+            title="Governments"
+            description="Lower borrowing costs and direct access to global capital markets."
+          />
+          <FeatureCard
+            icon={TrendingUp}
+            title="Investors"
+            description="De-risked, scalable green assets that meet institutional mandates."
+          />
+          <FeatureCard
+            icon={Zap}
+            title="Project Developers"
+            description="A faster, clearer path from concept to financing."
+          />
+          <FeatureCard
+            icon={Users}
+            title="Communities"
+            description="More climate and infrastructure projects reach construction, faster."
+          />
         </div>
       </SectionWrapper>
 

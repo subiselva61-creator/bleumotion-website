@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom"
-import { Scale, ShieldCheck, ArrowRight } from "lucide-react"
+import {
+  Scale,
+  ShieldCheck,
+  Users,
+  Leaf,
+  Handshake,
+  Eye,
+} from "lucide-react"
 import PageHero from "../components/PageHero"
 import SectionWrapper from "../components/SectionWrapper"
+import FeatureCard from "../components/FeatureCard"
+import PullQuote from "../components/PullQuote"
+import Timeline from "../components/Timeline"
 import CTABanner from "../components/CTABanner"
 
 export default function Vision() {
@@ -57,22 +66,79 @@ export default function Vision() {
       </SectionWrapper>
 
       <SectionWrapper variant="white">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xl font-medium leading-relaxed text-midnight md:text-2xl">
-            This is about more than infrastructure. It's about giving nations
-            the tools to define — and finance — their own sustainable future.
-          </p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 text-lg font-semibold text-royal transition-colors hover:text-electric focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal"
-          >
-            Partner with Bleumotion to help build this infrastructure
-            <ArrowRight className="h-5 w-5" />
-          </Link>
+        <h2 className="mb-10 text-center text-2xl font-bold text-midnight md:text-3xl">
+          Founding Principles
+        </h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <FeatureCard
+            icon={Scale}
+            title="Sovereignty"
+            description="Financial self-determination for the Global South."
+          />
+          <FeatureCard
+            icon={Users}
+            title="Inclusion"
+            description="Access for nations of all sizes, not just the largest economies."
+          />
+          <FeatureCard
+            icon={Eye}
+            title="Transparency"
+            description="Open standards, open reporting."
+          />
+          <FeatureCard
+            icon={Leaf}
+            title="Sustainability"
+            description="Climate impact at the core of every decision."
+          />
+          <FeatureCard
+            icon={Handshake}
+            title="Collaboration"
+            description="Shared ownership and governance among member states."
+          />
         </div>
       </SectionWrapper>
 
-      <CTABanner />
+      <SectionWrapper variant="ice">
+        <PullQuote>
+          We believe the next chapter of global finance should be written by the
+          nations it has too often left out. Not as an act of charity, but as a
+          recognition that the world's climate future depends on capital reaching
+          the places where it's needed most — on terms those nations help define.
+        </PullQuote>
+      </SectionWrapper>
+
+      <SectionWrapper variant="white">
+        <Timeline
+          title="The Road Ahead"
+          milestones={[
+            {
+              title: "A founding coalition of Global South governments and development institutions is formed",
+              description: "",
+            },
+            {
+              title: "A unified green taxonomy is agreed and published",
+              description: "",
+            },
+            {
+              title: "The first pilot green-backed securities are issued",
+              description: "",
+            },
+            {
+              title: "Full operational launch, open to all qualifying member states",
+              description: "",
+            },
+            {
+              title: "Recognition as a credible peer to existing global settlement infrastructure",
+              description: "",
+            },
+          ]}
+        />
+      </SectionWrapper>
+
+      <CTABanner
+        headline="This is a long-term project — and it starts with the right partners."
+        buttonLabel="Join the Conversation"
+      />
     </>
   )
 }

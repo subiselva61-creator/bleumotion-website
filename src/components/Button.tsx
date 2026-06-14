@@ -10,6 +10,7 @@ interface ButtonProps {
   href?: string
   type?: "button" | "submit"
   className?: string
+  fullWidth?: boolean
   onClick?: () => void
 }
 
@@ -29,9 +30,11 @@ export default function Button({
   href,
   type = "button",
   className = "",
+  fullWidth = false,
   onClick,
 }: ButtonProps) {
-  const classes = `inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${variantClasses[variant]} ${className}`
+  const widthClass = fullWidth ? "w-full sm:w-auto" : ""
+  const classes = `inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${variantClasses[variant]} ${widthClass} ${className}`
 
   if (to) {
     return (
